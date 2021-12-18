@@ -1,0 +1,22 @@
+filebeat.inputs:
+  - type: docker
+    containers:
+      path: "/usr/share/dockerlogs/data"
+      stream: "stdout"
+      ids:
+        - "*"
+  - type: log
+    paths:
+      - /logs/*.log
+
+processors:
+  - add_docker_metadata:
+      host: "unix:///var/run/docker.sock"
+
+setup.kibana:
+  host: "localhost:5601"
+  username: "tanyginda"
+  password: "tanyginda"
+  
+output.logstash:
+  hosts: ["localhost:5044"]

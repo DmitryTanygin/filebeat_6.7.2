@@ -1,0 +1,1 @@
+docker run -d --name=filebeat --volume="$HOME/test-filebeat:/logs" --volume="/var/lib/docker/containers:/usr/share/dockerlogs/data:ro" --volume="/var/run/docker.sock:/var/run/docker.sock" filebeatimage filebeat -e --strict.perms=false
