@@ -1,8 +1,8 @@
 filebeat.inputs:
   - type: docker
     containers:
-      path: "/usr/share/elasticsearch/data"
-      stream: "stdout"
+      path: "/usr/share/dockerlogs/data"
+      stream: "all"
       ids:
         - "*"
   - type: log
@@ -20,3 +20,9 @@ setup.kibana:
   
 output.logstash:
   hosts: ["127.0.0.1:5044"]
+  
+logging.files:
+  path: /var/log/filebeat
+  name: filebeat
+  keepfiles: 7
+  permissions: 0644
