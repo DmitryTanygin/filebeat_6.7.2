@@ -1,1 +1,1 @@
-docker run -d --name=filebeat --volume="$HOME/test-filebeat:/logs" --volume="/var/lib/docker/containers:/usr/share/dockerlogs/data:ro" --volume="/var/run/docker.sock:/var/run/docker.sock" filebeatimage filebeat -e --strict.perms=false
+docker run -d --name=filebeat --user=root --network="host" --volume="$HOME/filebeat_6.7.2/test-filebeat:/logs:ro" --volume="/var/lib/docker/containers:/var/lib/docker/containers:ro" --volume="/var/run/docker.sock:/var/run/docker.sock" filebeatimage filebeat -e --strict.perms=false

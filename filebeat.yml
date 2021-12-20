@@ -1,7 +1,7 @@
 filebeat.inputs:
   - type: docker
     containers:
-      path: "/usr/share/dockerlogs/data"
+      path: "/usr/share/elasticsearch/data"
       stream: "stdout"
       ids:
         - "*"
@@ -19,4 +19,4 @@ setup.kibana:
   password: "tanyginda"
   
 output.logstash:
-  hosts: ["localhost:5044"]
+  hosts: ["127.0.0.1:5044"]
